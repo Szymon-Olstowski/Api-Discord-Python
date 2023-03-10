@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+{% extends 'layout.html' %}
+
+{% block title %}Profile{% endblock %}
+
+
+{% block content %}
+<head>
+</head>
+<body>
+  <p>Lista kanałów na serwerze</p>
+  <form action="{{url_for('channel')}}" method="post">
+    Token bota (bot token):<input type="text" name="token" placeholder="token" id="token" required>
+    <br>
+    Id serwera:<input type="text" name="key_api" placeholder="key_api" id="key_api" required>
+    <br>
+    <input type="submit" value="Wykonaj">
+  <form>
+    <br>
+    <table border="1">
+      <tr>
+        <td>Nazawa kanłu typ kanału</td>
+      </tr>
+      {% for test in tab %}
+      <tr>
+        <td>{{test}}</td>
+      </tr>
+      {% endfor %}
+    </table>
+</body>
+</html>
+{%endblock %}
