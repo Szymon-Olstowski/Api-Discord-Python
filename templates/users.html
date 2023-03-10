@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+{% extends 'layout.html' %}
+
+{% block title %}Profile{% endblock %}
+
+
+{% block content %}
+<head>
+</head>
+<body>
+  <p>Dane o użytkowniku</p>
+  <form action="{{url_for('users')}}" method="post">
+    Token bota (bot token):<input type="text" name="token" placeholder="token" id="token" required>
+    <br>
+    Nazwa użytkonika:<input type="text" name="userm" placeholder="userm" id="userm" required>
+    <br>
+    Id serwera:<input type="text" name="id_serwer" placeholder="id_serwer" id="id_serwer" required>
+    <br>
+    <input type="submit" value="Wykonaj">
+  <form>
+    <br>
+    Avatar: {{d['avatar']}}
+    <br>
+    Komunikacja wyłączona do: {{d['communication_disabled_until']}}
+    <br>
+    Dołączył: {{d['joined_at']}}
+    <br>
+    Zmutowany: {{d['mute']}}
+    <br>
+    Psedomin: {{d['nick']}}
+    <br>
+    Nitro: {{d['premium_since']}}
+    <br>
+    Role: {{d['roles']}}
+    <br>
+    Bot: {{ds['bot']}}
+    <br>
+    Id: {{ds['id']}}
+    <br>
+    Nazwa użytkownika: {{ds['username']}}
+
+</body>
+</html>
+{%endblock %}
