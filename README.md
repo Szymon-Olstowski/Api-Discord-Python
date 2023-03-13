@@ -9,6 +9,8 @@ Dostępne funkcję:
 <br>
 -lista kanałow na serwerze
 <br>
+-dodano sytem logów
+<br>
 Aby do porprawnego działania należy posiadać bota na danym serwerze z uprawieniami administratora.
 <br>
 Trzeba posiadać token bota i należy wkleić zgodnie z wzorem (Bot token_bota).

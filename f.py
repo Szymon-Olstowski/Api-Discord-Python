@@ -68,5 +68,29 @@ def channel():
                 case 15:
                    tab.append(str(data2[i]['name']+" Kanał zawierający wątki"))
     return render_template('channel.html',tab=tab)
+@app.route('/logs',methods=['GET', 'POST'])
+def logs():
+    tas=[]
+    tas1=[]
+    data3=0
+    if request.method=='POST' and 'token' in request.form and 'key_api' in request.form:
+        token=request.form['token']
+        key_api=request.form['key_api']
+        headers = {
+            "Authorization":token
+            }
+        response3=requests.get("https://discord.com/api/v10/guilds/"+key_api+"/audit-logs",headers=headers)
+        data3=response3.json()['integrations']
+        data3s=response3.json()['audit_log_entries']
+        a=len(data3)
+        ai=len(data3s)
+        print(data3s)
+        for i in range(0,a):
+            tas.append("id: "+str(data3[i]['id'])+ "\nNazwa: "+str(data3[i]['name'])+"\nTyp: "+str(data3[i]['type'])+"\nNazwa konta: "+str(data3[i]['account']['name'])+"\nId: "+str(data3[i]['account']['id'])+"\nAplikcja id: "+str(data3[i]['application_id']))
+        for i in range(0,ai):
+            tas1.append(data3s[i])
+        
+
+    return render_template('logs.html',tas=tas,tas1=tas1)
 if __name__ == '__main__':
-    app.run(host='192.168.0.220') #wprawadź api swojego komputera
+    app.run(host='127.0.0.1') #wprawadź api swojego komputera
